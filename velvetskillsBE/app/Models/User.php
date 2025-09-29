@@ -6,11 +6,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +24,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'bio',
+
     ];
 
     /**
@@ -45,4 +51,28 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function credentials(): HasMany
+        {
+            return $this->hasMany(Credential::class);
+        }
+
+    public function skills(): BelongsToMany
+    {
+        return $this->belongsToMany(Skill::class, 'user_skills')
+            ->withPivot(['level','is_selected','status'])
+            ->withTimestamps();
+    }
+
+    public function userSkills(): HasMany
+    {
+        return $this->hasMany(UserSkill::class);
+    }
+
+    //moderator koji je pregledao credentials
+    public function reviewedCredentials(): HasMany
+    {
+        return $this->hasMany(Credential::class, 'reviewed_by');
+    }
+
 }
