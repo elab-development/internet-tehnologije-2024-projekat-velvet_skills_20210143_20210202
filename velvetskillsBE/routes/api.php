@@ -36,4 +36,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/skills', [UserSkillController::class, 'mySkills']);
     Route::post('/skills/add', [UserSkillController::class, 'addSkillByName']);
 
+    Route::put('/skills/{userSkillId}', [UserSkillController::class, 'updateUserSkill']);
+    Route::delete('/skills/{userSkillId}', [UserSkillController::class, 'deleteUserSkill']);
+
+    Route::get('/credentials', [CredentialController::class, 'myCredentials']);
+    Route::post('/credentials', [CredentialController::class, 'store']);
+    Route::delete('/credentials/{id}', [CredentialController::class, 'destroy']);
+
+    Route::get('/export-skills', [UserController::class, 'exportSkills']);
+
+
 });

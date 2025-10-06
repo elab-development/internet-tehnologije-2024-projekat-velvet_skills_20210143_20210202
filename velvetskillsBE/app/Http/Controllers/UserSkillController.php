@@ -6,11 +6,12 @@ use App\Http\Resources\UserSkillResource;
 use App\Models\Skill;
 use App\Models\UserSkill;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserSkillController extends Controller
 {
     /**
-     * 11. Pregled mojih veština (ulogovani korisnik)
+     *  Pregled mojih veština (ulogovani korisnik)
      */
     public function mySkills(Request $request)
     {
@@ -26,7 +27,7 @@ class UserSkillController extends Controller
     }
 
     /**
-     * 12. Dodavanje veštine iz liste po nazivu
+     * Dodavanje veštine iz liste po nazivu
      */
     public function addSkillByName(Request $request)
     {
@@ -63,5 +64,56 @@ class UserSkillController extends Controller
         return response()->json(['message' => 'Skill added successfully.'], 201);
     }
 
-    
+    /**
+     *  Azuriranje moje vestrine
+     */
+    public function updateUserSkill(Request $request, $userSkillId)
+    {
+        $user = auth()->user();
+
+        if (!$user || $user->role !== 'user') {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
+        $userSkill = UserSkill::where('id', $userSkillId)
+            ->where('user_id', $user->id)
+            ->first();
+
+        if (!$userSkill) {
+            return response()->json(['message' => 'Skill not found for this user.'], 404);
+        }
+
+        $request->validate([
+            'level'       => 'nullable|integer|min:1|max:5',
+            'is_selected' => 'nullable|boolean'
+        ]);
+
+        $userSkill->update($request->only(['level', 'is_selected']));
+
+        return response()->json(['message' => 'User skill updated successfully.']);
+    }
+
+    /**
+     * Obriši dodatu veštinu iz svoje liste
+     */
+    public function deleteUserSkill($userSkillId)
+    {
+        $user = auth()->user();
+
+        if (!$user || $user->role !== 'user') {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
+        $userSkill = UserSkill::where('id', $userSkillId)
+            ->where('user_id', $user->id)
+            ->first();
+
+        if (!$userSkill) {
+            return response()->json(['message' => 'Skill not found for this user.'], 404);
+        }
+
+        $userSkill->delete();
+
+        return response()->json(['message' => 'User skill deleted successfully.']);
+    }
 }

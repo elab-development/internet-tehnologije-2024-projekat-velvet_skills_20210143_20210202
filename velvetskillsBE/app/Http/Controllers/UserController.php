@@ -6,6 +6,8 @@ use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\UserSkillsExport;
 
 class UserController extends Controller
 {
@@ -42,5 +44,18 @@ class UserController extends Controller
         $user->update($validated);
 
         return new UserResource($user);
+    }
+
+    public function exportSkills()
+    {
+        $user = auth()->user();
+
+        if (!$user || $user->role !== 'user') {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+
+        $fileName = 'user_skills_' . $user->id . '.xlsx';
+
+        return Excel::download(new UserSkillsExport($user), $fileName);
     }
 }
