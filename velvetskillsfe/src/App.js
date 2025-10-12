@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 
-import Navbar from "./komponente/Navbar";
+import Navbar from "./reusable/Navbar";
 import Home from "./komponente/Home";
 import Login from "./komponente/Login";
 import Register from "./komponente/Register";
 import Profile from "./komponente/Profile";
 import AdminHome from "./komponente/AdminHome";
 import ModeratorHome from "./komponente/ModeratorHome";
+import Footer from "./reusable/Footer";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -31,7 +32,7 @@ function App() {
             <>
               <Route path="/" element={<Navigate to="/login" />} />
               <Route path="/login" element={<Login setUser={setUser} />} />
-              <Route path="/register" element={<Register />} />
+              <Route path="/register" element={<Register setUser={setUser} />} />
             </>
           )}
 
@@ -57,6 +58,8 @@ function App() {
             </>
           )}
         </Routes>
+        {/* Footer samo ako je korisnik ulogovan */}
+      {user && <Footer />}
       </div>
     </BrowserRouter>
   );

@@ -264,6 +264,14 @@ footer {
   cursor: pointer;
 }
 
+.navbar-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2em;
+  flex: 1;
+}
+
 .navbar-logo img {
   height: 50px;
   width: auto;
@@ -281,10 +289,11 @@ footer {
 /* Linkovi */
 .navbar-links {
   display: flex;
-  list-style: none;
   align-items: center;
-  gap: 1.2em;
+  list-style: none;
+  gap: 1.5em;
   margin: 0;
+  padding: 0;
 }
 
 .navbar-links a {
@@ -313,6 +322,241 @@ footer {
 .logout-btn:hover {
   background: var(--color-main-light);
 }
+
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.table-actions {
+  display: flex;
+  gap: 0.6em;
+  justify-content: center;
+}
+
+.table-btn {
+  padding: 0.4em 0.8em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: white;
+  transition: all 0.3s ease;
+  background: var(--color-main-light);
+}
+
+.table-btn:hover {
+  background: var(--color-main);
+}
+
+/* Dodatne klase za boje akcija (opciono) */
+.table-btn.edit {
+  background: var(--color-secondary);
+}
+
+.table-btn.delete {
+  background: var(--color-main);
+}
+
+.table-btn.view {
+  background: var(--color-main-light);
+}
+
+.table-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* -------------------------------------------------
+   Filter & Pagination Styles – Velvet Skills
+---------------------------------------------------*/
+
+/* Filter bar */
+.filter-bar input {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--color-white);
+  color: var(--color-accent);
+  outline: none;
+}
+
+.filter-bar button {
+  background: var(--color-main);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.6em 1.2em;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+.filter-bar button:hover {
+  background: var(--color-main-light);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6em;
+  margin-top: 1.5em;
+  flex-wrap: wrap;
+}
+
+.page-btn {
+  background: var(--color-accent);
+  border: none;
+  padding: 0.5em 0.9em;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-main);
+  transition: 0.3s;
+}
+
+.page-btn:hover {
+  background: var(--color-main-light);
+  color: white;
+}
+
+.page-btn.active {
+  background: var(--color-main);
+  color: white;
+}
+
+.pagination-controls button {
+  background: var(--color-zomp);
+  border: none;
+  color: var(--color-main);
+  border-radius: 8px;
+  padding: 0.5em 0.8em;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.pagination-controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.admin-page {
+  margin: 3em;
+  padding: 2em 4em;
+  background-color: aliceblue;
+}
+
+/* Galerija slika */
+.admin-gallery {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5em;
+}
+
+.admin-gallery img {
+  width: 46%;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  transition: 0.3s;
+}
+
+.admin-gallery img:hover {
+  transform: scale(1.03);
+}
+
+/* Sadržaj (tabela + filter) */
+.admin-content {
+  background: var(--gradient-soft);
+  border-radius: 20px;
+  padding: 2em;
+  margin-top: 3em;
+  margin-left: 2em; 
+}
+
+.filter-bar {
+  background-color: var(--color-main-light);
+}
+
+/* -------------------------------------------------
+   Footer Styles – Velvet Skills (modularno)
+---------------------------------------------------*/
+
+.footer {
+  background: var(--gradient-revert);
+  color: white;
+  padding: 2.5em 3em 1.5em 3em;
+  border-radius: 20px 20px 0 0;
+  margin-top: 3em;
+  box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2em;
+  margin-bottom: 1.5em;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.4em;
+}
+
+.footer-section a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.footer-section a:hover {
+  color: var(--color-thistle);
+}
+
+/* Ikonice */
+.footer-icons {
+  display: flex;
+  gap: 0.8em;
+  margin-top: 0.5em;
+}
+
+.footer-icons a {
+  color: white;
+  font-size: 2rem;
+  transition: 0.3s;
+}
+
+.footer-icons a:hover {
+  color: var(--color-thistle);
+  transform: scale(1.1);
+}
+
+/* Donji deo */
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  padding-top: 1em;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+
+
 
 
 
