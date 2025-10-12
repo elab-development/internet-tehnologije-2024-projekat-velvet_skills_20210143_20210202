@@ -721,6 +721,136 @@ footer {
   background: var(--color-main);
 }
 
+/* ======================================
+   PROFILE PAGE LAYOUT
+====================================== */
+
+.profile-page {
+  padding: 2em 3em;
+}
+
+/* Sekcija opis ispod naslova */
+.page-desc {
+  margin-bottom: 2em;
+  max-width: 700px;
+  color: var(--color-text);
+}
+
+/* Gornji deo - dve kartice u liniji */
+.profile-top {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2em;
+  margin-bottom: 3em;
+}
+
+/* Leva kartica - Dodavanje kredencijala */
+.add-credential {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 300px;
+  background: var(--color-magnolia);
+  border: 2px dashed var(--color-main-light);
+  color: var(--color-main);
+}
+
+.add-credential h2 {
+  margin-bottom: 0.5em;
+}
+
+.add-credential p {
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+/* Desna kartica - Profil korisnika */
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5em;
+  background-color:#e4b6d5;
+}
+
+.profile-info {
+  margin-bottom: 1.5em;
+}
+
+.profile-info h2 {
+  color: var(--color-main);
+  margin-bottom: 0.5em;
+}
+
+.bio-input {
+  width: 100%;
+  height: 80px;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  padding: 0.7em;
+  resize: none;
+  font-family: inherit;
+}
+
+.btn-save {
+  background: var(--color-main-light);
+  color: white;
+  padding: 0.6em 1.2em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-save:hover {
+  background: var(--color-main);
+}
+
+/* GIF/slika sekcija */
+.gif-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+}
+
+.profile-gif {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Regeneriši dugme */
+.btn-regenerate {
+  background: var(--color-secondary);
+  color: white;
+  padding: 0.5em 1.2em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-regenerate:hover {
+  background: var(--color-main-light);
+}
+
+/* Donji deo - tabela veština */
+.profile-bottom {
+  margin-top: 3em;
+}
+
+.empty-table {
+  text-align: center;
+  padding: 2em;
+  color: var(--color-text);
+  opacity: 0.8;
+}
+
 
 
 
