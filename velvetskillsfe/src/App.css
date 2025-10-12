@@ -153,7 +153,8 @@ input:focus, select:focus, textarea:focus {
 
 
 .section {
-  padding: 3em 2em;
+  padding: 20px;
+  margin: 30px;
   background: var(--gradient-soft);
   border-radius: 20px;
   margin-bottom: 2em;
@@ -352,7 +353,7 @@ footer {
 }
 
 /* Dodatne klase za boje akcija (opciono) */
-.table-btn.edit {
+.table-btn.edit, .btn-approve {
   background: var(--color-secondary);
 }
 
@@ -554,6 +555,172 @@ footer {
   font-size: 1rem;
   opacity: 0.9;
 }
+
+.images {
+  display: flex;
+  gap: 1.5em;
+  margin-bottom: 2em;
+  flex-wrap: wrap;
+}
+
+.info-image {
+  width: 250px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Filteri */
+.filters {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+  max-width: 1000px;
+  margin-bottom: 2em;
+  background-color: #bf6192;
+}
+
+/* Grupisane kartice */
+.user-section {
+  margin-top: 2em;
+  background-color: var(--color-white);
+  border-radius: 15px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+
+}
+
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5em;
+  padding: 20px;
+}
+
+.credential-card {
+  background: var(--color-accent);
+  border-radius: 15px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 300px;
+  transition: transform 0.3s;
+}
+
+.credential-card:hover {
+  transform: translateY(-4px);
+}
+
+.credential-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.status {
+  padding: 0.2em 0.6em;
+  border-radius: 8px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.status.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status.approved {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status.rejected {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+
+
+.image-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  backdrop-filter: blur(4px);
+}
+
+.image-modal-content {
+  position: relative;
+  max-width: 95%;
+  max-height: 95%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-modal-img {
+  max-width: 100%;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 15px;
+}
+
+
+.image-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--color-secondary);
+  padding: 10px;
+  padding-bottom: 17px;
+  border: none;
+  color: white;
+  font-size: 1.3em;
+  border-radius: 2%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.image-modal-close:hover {
+  background: var(--color-main-light);
+}
+
+.credential-image-wrapper {
+  position: relative;
+  text-align: center;
+}
+
+.btn-view {
+  margin-top: 0.5em;
+  background: var(--color-main-light);
+  color: white;
+  border: none;
+  padding: 0.4em 0.9em;
+  border-radius: 8px;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+.btn-view:hover {
+  background: var(--color-main);
+}
+
 
 
 
