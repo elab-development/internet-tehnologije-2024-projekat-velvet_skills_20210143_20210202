@@ -41,9 +41,8 @@ Logout: poništavanje sesije/tokena i brisanje lokalnih podataka.
 ---
 
 ## Pokretanje projekta
----------------------------
 
-1. Klonirajte repozitorijum:
+1. Klonirajte repozitorijum: https://github.com/elab-development/internet-tehnologije-2024-projekat-velvet_skills_20210143_20210202
 
 2. Pokrenite backend:
 ```bash
