@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { usePexelsImage } from "../hooks/usePexelsImage";
+import UserSkillsManager from "./UserSkillsManager";
+import UserCredentialsForm from "./UserCredentialsForm";
+import UserCredentialsGrid from "./UserCredentialsGrid";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const token = JSON.parse(sessionStorage.getItem("user"))?.token;
+
+  const [refreshKey, setRefreshKey] = useState(0);
+  const handleCredentialAdded = () => setRefreshKey((prev) => prev + 1);
 
   const { image, loading: loadingImage, fetchImage } = usePexelsImage("motivation");
 
@@ -54,10 +60,7 @@ const Profile = () => {
       {/* Gornji deo - dve kartice */}
       <div className="profile-top">
         {/* Leva kartica */}
-        <div className="card add-credential">
-          <h2>Dodaj novi kredencijal</h2>
-          <p>Ovde ćeš kasnije moći da dodaješ svoje diplome, sertifikate i veštine.</p>
-        </div>
+         <UserCredentialsForm onAdded={handleCredentialAdded} />
 
         {/* Desna kartica - profil */}
         {user && (
@@ -98,12 +101,13 @@ const Profile = () => {
         )}
       </div>
 
+      {/* Sekcija sa svim kredencijalima */}
+      <UserCredentialsGrid refreshKey={refreshKey} />
+
+
       {/* Donji deo - tabela */}
       <div className="profile-bottom">
-        <h2>Moje veštine</h2>
-        <div className="card empty-table">
-          <p>Tabela veština će biti prikazana ovde.</p>
-        </div>
+        <UserSkillsManager></UserSkillsManager>
       </div>
     </div>
   );

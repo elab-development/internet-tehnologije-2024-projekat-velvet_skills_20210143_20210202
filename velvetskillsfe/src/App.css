@@ -851,6 +851,57 @@ footer {
   opacity: 0.8;
 }
 
+.skills-section {
+  margin-top: 2em;
+}
+
+/* Forma za dodavanje veštine */
+.add-skill-form {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 1.5em;
+}
+
+.add-skill-form select {
+  flex: 1;
+  padding: 0.6em;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.add-skill-form button {
+  background: var(--color-main-light);
+  color: white;
+  border: none;
+  padding: 0.6em 1em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.add-skill-form button:hover {
+  background: var(--color-main);
+}
+
+.credentials-grid-section {
+  margin-top: 2em;
+}
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5em;
+}
+.credential-card {
+  width: 320px;
+}
+.credential-image-wrapper img {
+  width: 100%;
+  border-radius: 10px;
+}
+.status.approved { color: green; font-weight: 600; }
+.status.pending { color: orange; font-weight: 600; }
+.status.rejected { color: red; font-weight: 600; }
 
 
 
