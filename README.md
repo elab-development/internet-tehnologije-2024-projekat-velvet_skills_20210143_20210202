@@ -6,30 +6,39 @@ Velvet Skills je full-stack aplikacija za upravljanje veštinama i kredencijalim
 
 ## Tehnologije i arhitektura
 
-Frontend: React 18, React Router, Chart lib (npr. react-chartjs-2 ili recharts), deljeni shared.css.
+**Frontend:** React 18, React Router, Chart lib (npr. react-chartjs-2 ili recharts), deljeni shared.css.
 
-Backend: Laravel (REST API), Eloquent modeli (User, Skill, UserSkill, Credential), resursi i policy/middleware zaštita.
+**Backend:** Laravel (REST API), Eloquent modeli (User, Skill, UserSkill, Credential), resursi i policy/middleware zaštita.
 
-Baza: MySQL (relacije: korisnik–veštine M:N preko user_skills; korisnik–kredencijali 1:N; veština–kredencijal 1:N).
+**Baza:** MySQL (relacije: korisnik–veštine M:N preko user_skills; korisnik–kredencijali 1:N; veština–kredencijal 1:N).
 
-Autentikacija: Bearer token; token i osnovni profil čuvaju se u sessionStorage ili localStorage.
+**Autentikacija:** Bearer token; token i osnovni profil čuvaju se u sessionStorage ili localStorage.
 
-Export: Laravel + Maatwebsite/Excel za generisanje .xlsx (npr. exportSkills()).
-
----
-
-## 
-
-
+**Export:** Laravel + Maatwebsite/Excel za generisanje .xlsx (npr. exportSkills()).
 
 ---
 
+## Slučajevi korišćenja (sažeto)
 
+Svi korisnici: registracija, prijava, odjava.
+
+Administrator: pregled svih korisnika, brisanje korisnika.
+
+Moderator: pregled svih kredencijala, ažuriranje statusa kredencijala.
+
+Ulogovani korisnik: pregled i ažuriranje profila, pregled/dodavanje/izmena/brisanje veština, pregled/dodavanje/brisanje kredencijala, export u Excel.
 
 ---
 
+## Bezbednost i pristup
 
+Frontend: zaštita ruta i uslovni prikaz menija po ulozi.
 
+Backend: middleware i policy provere; korisnik menja samo sopstvene resurse; administratorske i moderatorske operacije su ograničene.
+
+Logout: poništavanje sesije/tokena i brisanje lokalnih podataka.
+
+---
 
 ## Pokretanje projekta
 ---------------------------
