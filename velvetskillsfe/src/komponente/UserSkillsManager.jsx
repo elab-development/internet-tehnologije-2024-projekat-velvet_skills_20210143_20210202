@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ReusableTable from "../reusable/ReusableTable";
 
-const UserSkillsManager = () => {
+const UserSkillsManager = ({ onSkillAdded }) => {
   const [skills, setSkills] = useState([]);
   const [availableSkills, setAvailableSkills] = useState([]);
   const [selectedSkill, setSelectedSkill] = useState("");
   const [loading, setLoading] = useState(true);
   const token = JSON.parse(sessionStorage.getItem("user"))?.token;
 
-  // Učitavanje korisnikovih veština
+  // Dohvatanje korisnikovih veština
   const fetchSkills = async () => {
     try {
       const response = await axios.get("http://127.0.0.1:8000/api/skills", {
@@ -23,7 +23,7 @@ const UserSkillsManager = () => {
     }
   };
 
-  // Učitavanje dostupnih veština za dodavanje
+  // Dohvatanje dostupnih veština za dodavanje
   const fetchAvailableSkills = async () => {
     try {
       const response = await axios.get(
@@ -45,10 +45,14 @@ const UserSkillsManager = () => {
         { skill_name: selectedSkill },
         { headers: { Authorization: `Bearer ${token}` } }
       );
+
       alert("Veština uspešno dodata!");
       setSelectedSkill("");
-      fetchSkills();
-      fetchAvailableSkills();
+      await fetchSkills();
+      await fetchAvailableSkills();
+
+      // Obavesti roditeljsku komponentu (Profile.jsx) da je nova veština dodata
+      if (onSkillAdded) onSkillAdded();
     } catch (error) {
       alert("Greška pri dodavanju veštine.");
       console.error(error);
@@ -62,13 +66,14 @@ const UserSkillsManager = () => {
       await axios.delete(`http://127.0.0.1:8000/api/skills/${row.id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      fetchSkills();
+      await fetchSkills();
+      await fetchAvailableSkills();
     } catch (error) {
       console.error("Greška pri brisanju veštine:", error);
     }
   };
 
-  // Ažuriranje nivoa (inline)
+  // Ažuriranje nivoa (inline edit)
   const handleEdit = async (row) => {
     const newLevel = prompt(
       `Unesi novi nivo za ${row.name} (1–5):`,
@@ -86,7 +91,7 @@ const UserSkillsManager = () => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
       alert("Nivo veštine uspešno ažuriran!");
-      fetchSkills();
+      await fetchSkills();
     } catch (error) {
       console.error("Greška pri ažuriranju veštine:", error);
     }
@@ -105,7 +110,7 @@ const UserSkillsManager = () => {
     { key: "status", label: "Status" },
   ];
 
-  // Transformiši podatke u oblik koji tabela očekuje
+  // Transformiši podatke za tabelu
   const tableData = skills.map((s) => ({
     id: s.id,
     name: s.skill.name,
@@ -114,7 +119,7 @@ const UserSkillsManager = () => {
     status: s.status,
   }));
 
-  // Akcije za tabelu
+  // Akcije u tabeli
   const actions = [
     {
       label: "Uredi",
@@ -132,7 +137,7 @@ const UserSkillsManager = () => {
     <div className="skills-section">
       <h2>Moje Veštine</h2>
 
-      {/* Forma za dodavanje nove veštine */}
+      {/* Forma za dodavanje veštine */}
       <div className="card add-skill-form">
         <select
           value={selectedSkill}
@@ -145,10 +150,10 @@ const UserSkillsManager = () => {
             </option>
           ))}
         </select>
-        <button onClick={handleAddSkill}> Dodaj veštinu</button>
+        <button onClick={handleAddSkill}>Dodaj veštinu</button>
       </div>
 
-      {/* Tabela veština */}
+      {/* Tabela sa veštinama */}
       {loading ? (
         <p>Učitavanje veština...</p>
       ) : (
