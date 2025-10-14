@@ -774,6 +774,15 @@ footer {
   background-color:#e4b6d5;
 }
 
+.add-credential-form {
+  background-color:#e4b6d5;
+}
+.add-credential-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .profile-info {
   margin-bottom: 1.5em;
 }
@@ -903,6 +912,72 @@ footer {
 .status.pending { color: orange; font-weight: 600; }
 .status.rejected { color: red; font-weight: 600; }
 
+.user-home {
+  padding: 30px;
+  color: #3a003c;
+}
+.intro-text {
+  font-size: 1rem;
+  max-width: 700px;
+  margin-bottom: 30px;
+}
+
+/* Export sekcija */
+.export-section {
+  background-color: #f9d8e7;
+  padding: 25px;
+  border-radius: 14px;
+  margin-bottom: 40px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.export-section h2 {
+  margin-bottom: 10px;
+  color: #a2185b;
+}
+
+.export-section p {
+  margin-bottom: 15px;
+}
+
+.export-section button {
+  background-color: #a2185b;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+
+
+/* Metrike */
+.metrics {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.metric-card {
+  flex: 1;
+  min-width: 180px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Grafikon */
+.chart-container {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
 
 
 
