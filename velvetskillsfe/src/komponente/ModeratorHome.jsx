@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useImageModal } from "../hooks/useImageModal"; 
+import { Link } from "react-router-dom";
 
 const ModeratorHome = () => {
   const [credentials, setCredentials] = useState([]);
@@ -66,6 +67,9 @@ const ModeratorHome = () => {
 
   return (
     <div className="section" >
+      <nav className="breadcrumbs">
+      <Link to="/home">Home</Link> 
+      </nav>
       <h1>Moderator Home Stranica</h1>
       <p className="mb-3" style={{ maxWidth: "800px" }}>
         Ovde moderator može pregledati sve prijavljene kredencijale korisnika,
