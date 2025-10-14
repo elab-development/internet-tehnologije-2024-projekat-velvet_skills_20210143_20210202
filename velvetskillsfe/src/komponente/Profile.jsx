@@ -4,14 +4,19 @@ import { usePexelsImage } from "../hooks/usePexelsImage";
 import UserSkillsManager from "./UserSkillsManager";
 import UserCredentialsForm from "./UserCredentialsForm";
 import UserCredentialsGrid from "./UserCredentialsGrid";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const token = JSON.parse(sessionStorage.getItem("user"))?.token;
 
-  const [refreshKey, setRefreshKey] = useState(0);
-  const handleCredentialAdded = () => setRefreshKey((prev) => prev + 1);
+  //za refresh kad nesto novo dodajemo
+  const [refreshCredentials, setRefreshCredentials] = useState(0);
+  const [refreshSkills, setRefreshSkills] = useState(0);
+
+  const handleCredentialAdded = () => setRefreshCredentials((prev) => prev + 1);
+  const handleSkillAdded = () => setRefreshSkills((prev) => prev + 1);
 
   const { image, loading: loadingImage, fetchImage } = usePexelsImage("motivation");
 
@@ -52,16 +57,23 @@ const Profile = () => {
 
   return (
     <div className="section profile-page">
+      <nav className="breadcrumbs">
+      <Link to="/home">Home</Link> / <span>Profile</span>
+      </nav>
       <h1>Moj Profil</h1>
       <p className="page-desc">
         Ovde možeš videti svoje osnovne podatke, ažurirati opis i pogledati motivacionu sliku dana. 💫
       </p>
 
+
+
       {/* Gornji deo - dve kartice */}
       <div className="profile-top">
         {/* Leva kartica */}
-         <UserCredentialsForm onAdded={handleCredentialAdded} />
-
+        <UserCredentialsForm
+          onAdded={handleCredentialAdded}
+          refreshSkills={refreshSkills} // za ažuriranje dropdowna
+        />
         {/* Desna kartica - profil */}
         {user && (
           <div className="card profile-card">
@@ -102,12 +114,12 @@ const Profile = () => {
       </div>
 
       {/* Sekcija sa svim kredencijalima */}
-      <UserCredentialsGrid refreshKey={refreshKey} />
+      <UserCredentialsGrid refreshKey={refreshCredentials} />
 
 
       {/* Donji deo - tabela */}
       <div className="profile-bottom">
-        <UserSkillsManager></UserSkillsManager>
+         <UserSkillsManager onSkillAdded={handleSkillAdded} />
       </div>
     </div>
   );

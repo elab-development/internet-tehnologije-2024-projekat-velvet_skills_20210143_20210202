@@ -3,6 +3,7 @@ import axios from "axios";
 import ReusableTable from "../reusable/ReusableTable";
 import adminImg1 from "../assets/admin1.jpg";
 import adminImg2 from "../assets/admin2.webp";
+import { Link } from "react-router-dom";
 
 const AdminHome = () => {
   const [users, setUsers] = useState([]);
@@ -12,7 +13,7 @@ const AdminHome = () => {
 
   const user = JSON.parse(sessionStorage.getItem("user"));
 
-  // 🔄 Dohvatanje korisnika
+  // Dohvatanje korisnika
   const fetchUsers = async (page = 1) => {
     setLoading(true);
     try {
@@ -86,6 +87,9 @@ const AdminHome = () => {
 
   return (
     <div className="admin-page section">
+      <nav className="breadcrumbs">
+            <Link to="/home">Home</Link> 
+            </nav>
       {/* NASLOV I OPIS */}
       <div className="admin-header">
         <h1>Administrator Home Stranica</h1>

@@ -13,7 +13,7 @@ const UserCredentialsForm = ({ onAdded }) => {
   const [availableSkills, setAvailableSkills] = useState([]);
   const token = JSON.parse(sessionStorage.getItem("user"))?.token;
 
-  // 🔹 Dohvati korisnikove veštine
+  // Dohvati korisnikove veštine
   const fetchUserSkills = async () => {
     try {
       const response = await axios.get("http://127.0.0.1:8000/api/skills", {
@@ -27,7 +27,7 @@ const UserCredentialsForm = ({ onAdded }) => {
     }
   };
 
-  // 🔹 Dodaj kredencijal
+  // Dodaj kredencijal
   const handleAddCredential = async (e) => {
     e.preventDefault();
 
