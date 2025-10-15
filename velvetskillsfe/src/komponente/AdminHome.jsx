@@ -57,7 +57,7 @@ const AdminHome = () => {
       return;
 
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/admin/users/${row.id}`, {
+      await axios.delete(`http://127.0.0.1:8000/api/admin/users/${row.id}/delete`, {
         headers: {
           Authorization: `Bearer ${user?.token}`,
         },

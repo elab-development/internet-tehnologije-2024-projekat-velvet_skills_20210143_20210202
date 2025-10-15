@@ -21,11 +21,11 @@ Route::middleware('auth:sanctum')->group(function () {
 
    //admin rute
     Route::get('/admin/users', [AdminController::class, 'index']);
-    Route::delete('/admin/users/{id}', [AdminController::class, 'destroy']);
+    Route::delete('/admin/users/{id}/delete', [AdminController::class, 'destroy']);
 
     //moderator rute
     Route::get('/moderator/credentials', [CredentialController::class, 'moderatorIndex']);
-    Route::put('/moderator/credentials/{id}', [CredentialController::class, 'moderatorUpdateStatus']);
+    Route::patch('/moderator/credentials/{id}/update', [CredentialController::class, 'moderatorUpdateStatus']);
 
 
     //klasican korisnik rute

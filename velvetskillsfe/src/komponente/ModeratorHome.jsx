@@ -44,8 +44,8 @@ const ModeratorHome = () => {
   // Promena statusa kredencijala
   const handleStatusChange = async (id, newStatus) => {
     try {
-      await axios.put(
-        `http://127.0.0.1:8000/api/moderator/credentials/${id}`,
+      await axios.patch(
+        `http://127.0.0.1:8000/api/moderator/credentials/${id}/update`,
         { status: newStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );

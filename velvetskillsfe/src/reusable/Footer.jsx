@@ -16,17 +16,26 @@ const Footer = () => {
 
         {/* Srednja sekcija */}
         <div className="footer-section links">
-          <h4>Korisni linkovi</h4>
+          
           <ul>
-            <li>
-              <button className="footer-btn">O nama</button>
-            </li>
-            <li>
-              <button className="footer-btn">Politika privatnosti</button>
-            </li>
-            <li>
-              <button className="footer-btn">Podrška</button>
-            </li>
+           <li>
+            <button
+              type="button"
+              className="footer-btn"
+              onClick={() => window.open("https://en.wikipedia.org/wiki/Credential", "_blank", "noopener,noreferrer")}
+            >
+              O kredencijalima
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              className="footer-btn"
+              onClick={() => window.open("https://www.fon.bg.ac.rs/", "_blank", "noopener,noreferrer")}
+            >
+              FON
+            </button>
+          </li>
           </ul>
         </div>
 
